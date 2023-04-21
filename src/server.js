@@ -36,14 +36,9 @@ try {
 
   app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }))
   app.use(helmet({
-    contentSecurityPolicy: {
-      crossOriginResourcePolicy: false,
-      crossOriginEmbedderPolicy: false,
-      directives: {
-        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        'img-src': ["'self'", 'https://gitlab.lnu.se', "https://secure.gravatar.com"],
-      },
-    },
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: false,
   }))
 
   app.use(express.json())

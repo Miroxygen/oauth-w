@@ -42,7 +42,7 @@ iocContainer.register('ActivityController', ActivityController, {
 
 iocContainer.register('AuthenticationController', AuthenticationController, {
   dependencies: [
-    'GitLabOathService'
+    'GitLabOauthService'
   ],
   singleton: true
 })

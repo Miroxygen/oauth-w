@@ -37,6 +37,7 @@ try {
   app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }))
   app.use(helmet({
     contentSecurityPolicy: {
+      crossOriginResourcePolicy: false,
       crossOriginEmbedderPolicy: false,
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),

@@ -12,8 +12,8 @@ export class GitLabOauthService {
      * Gets the needed URL for auth endpoint.
      * @returns String url.
      */
-    getAuthorizationUrl() {
-      const url = `${this.baseURL}/oauth/authorize?client_id=${this.clientId}&redirect_uri=${this.redirectUri}&response_type=code&scope=${encodeURIComponent(this.scope)}`;
+    getAuthorizationUrl(baseURL, clientId, redirectUri) {
+      const url = `${baseURL}/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${encodeURIComponent(this.scope)}`;
       return url
     }
   
@@ -24,13 +24,13 @@ export class GitLabOauthService {
      */
     async getAccessToken(code, clientId, clientSecret, redirectUri, baseURL) {
       const formData = new URLSearchParams()
-      formData.append('client_id', this.clientId)
-      formData.append('client_secret', this.clientSecret)
+      formData.append('client_id', clientId)
+      formData.append('client_secret', clientSecret)
       formData.append('code', code)
       formData.append('grant_type', 'authorization_code')
-      formData.append('redirect_uri', this.redirectUri)
+      formData.append('redirect_uri', redirectUri)
   
-      const response = await fetch(`${this.baseURL}/oauth/token`, {
+      const response = await fetch(`${baseURL}/oauth/token`, {
         method: 'POST',
         body: formData,
       })

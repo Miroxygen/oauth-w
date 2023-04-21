@@ -17,7 +17,7 @@ export class AuthenticationController {
    */
   authenticateTowardsGitLabWithOaut(req, res) {
     try {
-      const authorizationUrl = this.authService.getAuthorizationUrl()
+      const authorizationUrl = this.authService.getAuthorizationUrl(process.env.BASE_URL, process.env.GITLAB_APP_ID, process.env.CALLBACK_URL)
       res.redirect(authorizationUrl)
     } catch (error) {
       res.render('errors/500')

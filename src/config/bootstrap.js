@@ -2,7 +2,7 @@
  * Module for bootstrapping.
  */
 
-import { IoCContainer } from '../util/IoCContainer.js'
+import { IoCContainer } from '../utils/IoCContainer.js'
 import { HttpRequestService } from '../services/httpRequestService.js'
 import { FetchDataGraphQlService } from '../services/fetchDataGraphQlService.js'
 import { GetAvatar } from '../services/getAvatar.js'

@@ -1,0 +1,264 @@
+/* General styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Header styles */
+header {
+  background-color: #444;
+  color: #fff;
+  padding: 1rem;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+/* Main styles */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Link styles */
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Style the menu bar */
+.menu {
+  background-color: #f2f2f2;
+  overflow: hidden;
+}
+
+/* Style the buttons */
+.menu button {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Change the background color of buttons on hover */
+.menu button:hover {
+  background-color: #ddd;
+}
+
+/* Style the active button */
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Style the login gitlab button */
+
+.login-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #6e40aa;
+  color: #fff;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top:100px;
+  margin-left: 200px;
+}
+
+.login-button:hover {
+  background-color: #5d338a;
+}
+
+.gitlab-logo {
+  width: 50px;
+  margin-right: 10px;
+}
+
+/* Style for list */
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 1rem;
+}
+
+li strong {
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+}
+
+li span {
+  display: inline-block;
+  width: calc(100% - 100px);
+}
+
+.profile-list {
+  margin-top: 80px;
+  margin-left: 100px;
+}
+
+/* Image style */
+
+.profile-img {
+  float: right;
+  margin-right: 1rem;
+}
+
+
+/* For activity site */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  max-height: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin-left: 100px;
+}
+
+.activity {
+  border: 2px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin: 10px;
+  width: 400px;
+  height: 150px;
+
+}
+
+.activity p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.activity p strong {
+  font-weight: bold;
+}
+.projects {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.project {
+  width: 80%;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+.project h2 {
+  font-size: 23px;
+  margin-top: 0;
+}
+.project ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+.project li {
+  margin-bottom: 5px;
+}
+.children {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-left: 1px solid #ccc;
+  background-color: rgb(237, 234, 231);
+}
+
+#groupForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 800px;
+  height: 150px;
+  margin-right: 50px;
+}
+
+label {
+  margin-bottom: 15px;
+}
+
+select, input[type="checkbox"], input[type="submit"] {
+  display: block;
+  margin: 10px 0;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.formSeperator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  width: 150px;
+  height: 100px;
+}
+
+
+

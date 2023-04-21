@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>User Profile</h1>
+    <div class="menu">
+      <button><a href="/">Home</a></button>
+      <button class="active"><a href="/profile">Profile</a></button>
+      <button><a href="/activities">Activities</a></button>
+      <button><a href="/groups">Groups</a></button>
+      <button style="float:right"><a href="#">Logout</a></button>
+    </div>
+    <img src="<%= user.avatar_url %>" alt="Profile Image" width="100" class="profile-img">
+    <ul class="profile-list">
+      <li><strong>ID:</strong> <%= user.id %></li>
+      <li><strong>Email:</strong> <%= user.email %></li>
+      <li><strong>Name:</strong> <%= user.name %></li>
+      <li><strong>Username:</strong> <%= user.username %></li>
+      <li><strong>Last Activity:</strong> <%= user.lastActivity %></li>
+    </ul>
+  </main>
+  </body>
+</html>

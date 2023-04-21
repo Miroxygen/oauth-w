@@ -1,0 +1,33 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realtime Web Application</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body> 
+  <main>
+      <h1>Aktiviteter</h1>
+      <div class="menu">
+        <button><a href="/">Home</a></button>
+        <button><a href="/profile">Profile</a></button>
+        <button class="active"><a href="/activities">Activities</a></button>
+        <button><a href="/groups">Groups</a></button>
+        <button style="float:right"><a href="#">Logout</a></button>
+      </div>
+      <div class="container">
+        <div class="activities">
+          <h1>101 Latest activities</h1>
+          <% activities.forEach(function(activity) { %>
+            <div class="activity">
+              <p><strong>ID:</strong> <%= activity.id %></p>
+              <p><strong>Project ID:</strong> <%= activity.project_id %></p>
+              <p><strong>Action Name:</strong> <%= activity.action_name %></p>
+              <p><strong>Author ID:</strong> <%= activity.author_id %></p>
+              <p><strong>Created At:</strong> <%= activity.created_at %></p>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+  </main>  
+</body>

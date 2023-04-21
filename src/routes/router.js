@@ -23,5 +23,10 @@ router.get('/auth-succesful', (req, res, next) => {
   res.render('auth-succesful')
 })
 
+router.get('/log-out', (req, res) => {
+  req.session.destroy()
+  res.render('log-out')
+})
+
 router.use('*', (req, res, next) => next(createError(404)))
 

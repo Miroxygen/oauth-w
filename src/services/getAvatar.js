@@ -11,12 +11,12 @@ export class GetAvatar {
   /**
    * Retrieves a users avatar.
    */
-  async getAvatar(avatarLink, token) {
-    if(avatarLink.includes('gravatar.com/avatar')) {
+  async getAvatar (avatarLink) {
+    if (avatarLink.includes('gravatar.com/avatar')) {
       return avatarLink
     } else {
-      const response = await this.request.makeRequest(`https://gitlab.lnu.se/api/v4/avatar?email=mh225wi@student.lnu.se&size=32`, token)
-      return response.avatar_url
+      const newLink = `${process.env.BASE_URL}${avatarLink}`
+      return newLink
     }
   }
 }

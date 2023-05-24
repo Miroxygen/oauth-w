@@ -32,6 +32,7 @@ export class ProfileGitLabController {
   async displayProfile(req, res) {
     try {
       const profile = await this.getProfile(req, res)
+      console.log(profile)
       res.render('profile', {user : profile})
     } catch (error) {
       res.render('errors/500')

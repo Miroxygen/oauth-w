@@ -23,8 +23,7 @@ export class GroupController {
       const query = this.getQueryForGettingGroupData()
       const data = await this.dataService.fetchData(query, process.env.GRAPHQL_ADRESS, req.session.token)
       sortedData = this.sortDataAccordingToGroups(data)
-      const avatarUrl = await this.avatarService.getAvatar(sortedData.sortedData[0].projects[0].lastCommitAuthorAvatar, req.session.token)
-      sortedData.sortedData[0].projects[0].lastCommitAuthorAvatar = avatarUrl
+      this.updateAvatarUrls(sortedData)
       res.render('groups', {group : sortedData.sortedData, groupNumber: sortedData.noOfGroups})
     } catch (error) {
       res.render('errors/500')
@@ -106,4 +105,18 @@ export class GroupController {
   const groupData = {sortedData : sortedData, noOfGroups : groupCount}
   return groupData
  }
+
+ /**
+   * Updates avatarlinks so they are correct.
+   * 
+   * @param {Array} sortedData Data to update avatars on.
+   */
+ updateAvatarUrls(sortedData) {
+  for (const data of sortedData.sortedData) {
+    for (const project of data.projects) {
+      const avatarUrl = this._avatarService.getAvatar(project.lastCommitAuthorAvatar)
+      project.lastCommitAuthorAvatar = avatarUrl
+    }
+  }
+}
 }

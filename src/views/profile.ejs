@@ -18,6 +18,7 @@
       <button style="float:right"><a href="/log-out">Logout</a></button>
     </div>
     <img src="<%= user.avatar_url %>" alt="Profile Image" width="100" class="profile-img">
+    <div class="profile">
     <ul class="profile-list">
       <li><strong>ID:</strong> <%= user.id %></li>
       <li><strong>Email:</strong> <%= user.email %></li>
@@ -25,6 +26,7 @@
       <li><strong>Username:</strong> <%= user.username %></li>
       <li><strong>Last Activity:</strong> <%= user.last_activity_on %></li>
     </ul>
+  </div>
   </main>
   </body>
 </html>

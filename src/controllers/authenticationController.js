@@ -38,7 +38,11 @@ export class AuthenticationController {
       req.session.loggedIn = true
       res.redirect('/auth-succesful')
     } catch (error) {
-      res.render('errors/500')
+      if(error.message === "Invalid grant") {
+        res.render('errors/invalid-grant')
+      } else {
+        res.render('errors/500')
+      }
     }
   }
 }

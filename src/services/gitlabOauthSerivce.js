@@ -34,8 +34,10 @@ export class GitLabOauthService {
         method: 'POST',
         body: formData,
       })
-  
       const data = await response.json()
+      if(data.hasOwnProperty("error")) {
+        throw new Error("Invalid grant")
+      } 
       return data.access_token
     }
   }

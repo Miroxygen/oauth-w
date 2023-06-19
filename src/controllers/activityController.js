@@ -18,8 +18,13 @@ export class ActivityController {
   async getActivities(req, res) {
     try {
       const userData = await this.requestService.makeRequest(`${process.env.BASE_URL}/api/v4/user`, req.session.token)
-      const data = await this.requestService.makeRequest(`${process.env.BASE_URL}/api/v4/users/${encodeURIComponent(userData.id)}/events?per_page=101`, req.session.token)
-      return data
+      const activitiesFirstPage = await this.requestService.makeRequest(`${process.env.BASE_URL}/api/v4/users/${encodeURIComponent(userData.id)}/events?per_page=100`, req.session.token)
+      let activities = activitiesFirstPage
+      if(Object.keys(activitiesFirstPage).length === 100) {
+        const activitiesSecondPage = await this.requestService.makeRequest(`${process.env.BASE_URL}/api/v4/users/${encodeURIComponent(userData.id)}/events?per_page=1&page=2`, req.session.token)
+        activities = activities.concat(activitiesSecondPage)
+      }
+      return activities
     } catch (error) {
       res.render('errors/500')
     }

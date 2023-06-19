@@ -60,12 +60,16 @@
                 <% Object.keys(group.projects).forEach(project => { %>
                   <div class="children">
                   <ul>
-                    <li><strong>Name : </strong><%= group.projects[project].name %></li>
-                    <li><strong>WebURL : </strong><%= group.projects[project].webUrl %></li>
+                    <<li><strong>Name : </strong><%= group.projects[project].name || "N/A" %></li>
+                    <li><strong>WebURL : </strong><%= group.projects[project].webUrl || "N/A"%></li>
                     <li><strong> Last commit</strong></li>
-                    <img src="<%= group.projects[project].lastCommitAuthorAvatar %>" alt="Avatar" class="group-img">
-                    <li><strong>Author : </strong><%= group.projects[project].lastCommitAuthorName %> / <%= group.projects[project].lastCommitAuthorUsername %></li>
-                    <li><strong>Time : </strong><%= group.projects[project].lastCommitAuthoredDate %></li>
+                    <img src="<%= group.projects[project].lastCommitAuthorAvatar ? group.projects[project].lastCommitAuthorAvatar : '/images/baby-fox.png' %>" alt="Avatar" class="group-img">
+                    <% if(group.projects[project].lastCommitAuthoredDate) { %>
+                    <li><strong>Author : </strong><%= group.projects[project].lastCommitAuthorName || "N/A"%> / <%= group.projects[project].lastCommitAuthorUsername || "N/A"%></li>
+                    <li><strong>Time : </strong><%= group.projects[project].lastCommitAuthoredDate || "N/A"%></li>
+                    <%} else { %>
+                      <li>Project has no commits.</li>
+                    <% }%>  
                   </ul>
                 </div>
                   <% }) %>

@@ -35,7 +35,7 @@
                 <% Object.keys(group.projects).forEach(project => { %>
                   <div class="children">
                   <ul>
-                    <<li><strong>Name : </strong><%= group.projects[project].name || "N/A" %></li>
+                    <li><strong>Name : </strong><%= group.projects[project].name || "N/A" %></li>
                     <li><strong>WebURL : </strong><%= group.projects[project].webUrl || "N/A"%></li>
                     <li><strong> Last commit</strong></li>
                     <img src="<%= group.projects[project].lastCommitAuthorAvatar ? group.projects[project].lastCommitAuthorAvatar : '/images/baby-fox.png' %>" alt="Avatar" class="group-img">

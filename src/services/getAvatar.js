@@ -11,7 +11,7 @@ export class GetAvatar {
   /**
    * Retrieves a users avatar.
    */
-  async getAvatar (avatarLink) {
+   getAvatar (avatarLink) {
     if (avatarLink.includes('gravatar.com/avatar')) {
       return avatarLink
     } else {

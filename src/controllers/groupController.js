@@ -114,7 +114,7 @@ export class GroupController {
  updateAvatarUrls(sortedData) {
   for (const data of sortedData.sortedData) {
     for (const project of data.projects) {
-      const avatarUrl = this._avatarService.getAvatar(project.lastCommitAuthorAvatar)
+      const avatarUrl = this.avatarService.getAvatar(project.lastCommitAuthorAvatar)
       project.lastCommitAuthorAvatar = avatarUrl
     }
   }

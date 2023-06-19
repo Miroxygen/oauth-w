@@ -20,14 +20,12 @@ export class GroupController {
   async displayGroupData(req, res) {
     try {
       let sortedData = {sortedData : {}, noOfGroups : 0}
-      if(req.session.groupData !== undefined) {
-        const query = this.getQueryForGettingGroupData(req.session.groupData)
-        const data = await this.dataService.fetchData(query, process.env.GRAPHQL_ADRESS, req.session.token)
-        sortedData = this.sortDataAccordingToGroups(data)
-        const avatarUrl = await this.avatarService.getAvatar(sortedData.sortedData[0].projects[0].lastCommitAuthorAvatar, req.session.token)
-        sortedData.sortedData[0].projects[0].lastCommitAuthorAvatar = avatarUrl
-      }
-    res.render('groups', {group : sortedData.sortedData, groupNumber: sortedData.noOfGroups})
+      const query = this.getQueryForGettingGroupData()
+      const data = await this.dataService.fetchData(query, process.env.GRAPHQL_ADRESS, req.session.token)
+      sortedData = this.sortDataAccordingToGroups(data)
+      const avatarUrl = await this.avatarService.getAvatar(sortedData.sortedData[0].projects[0].lastCommitAuthorAvatar, req.session.token)
+      sortedData.sortedData[0].projects[0].lastCommitAuthorAvatar = avatarUrl
+      res.render('groups', {group : sortedData.sortedData, groupNumber: sortedData.noOfGroups})
     } catch (error) {
       res.render('errors/500')
       console.log(error)
@@ -36,20 +34,19 @@ export class GroupController {
 
   /**
    * Constructs the query according to user parameters.
-   * @param {object} queryparameters Users posted parameters.
    * @returns Query string.
    */
-  getQueryForGettingGroupData(queryparameters) {
+  getQueryForGettingGroupData() {
     const query = `query {
       currentUser {
         groupCount
-        groups(first : ${queryparameters.groupNumber}) {
+        groups(first : 5) {
           nodes {
             avatarUrl
             name
             fullPath
             webUrl
-            projects(first : ${queryparameters.projectNumber}, includeSubgroups : ${queryparameters.ifSubgroups}) {
+            projects(first : 3, includeSubgroups : true) {
               count
               nodes {
                 name
@@ -108,23 +105,5 @@ export class GroupController {
   }
   const groupData = {sortedData : sortedData, noOfGroups : groupCount}
   return groupData
- }
-
- /**
-  * Gets the query parameters from a POST request and sets a nice object in the session.
-  * @param {object} req Express req object.
-  * @param {object} res Express res object.
-  */
- getQueryParametersForGroupData(req, res) {
-  try {
-    let ifSubgroups = false
-    if(req.body.ifSubgroups === "on") {
-      ifSubgroups = true
-    } 
-    req.session.groupData = {groupNumber : req.body.groupNumber, projectNumber : req.body.projectNumber, ifSubgroups : ifSubgroups}
-    res.redirect('./groups')
-  } catch (error) {
-    res.render('errors/500')
-  }
  }
 }

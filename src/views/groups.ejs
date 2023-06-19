@@ -17,44 +17,19 @@
         <button style="float:right"><a href="/log-out">Logout</a></button>
       </div>
       <div class="container">
-        <form action="./groups" method="post" id="groupForm">
-          <div class="formSeperator">
-            <label for="groupNumber">Groupnumber</label>
-            <select name="groupNumber" id="groupNumber">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-          </div>
-          <div class="formSeperator">
-            <label for="projectNumber">Projectnumber</label>
-            <select name="projectNumber" id="projectNumber">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-          <div class="formSeperator">
-            <label for="ifSubgroups">Display subgroups</label>
-            <input type="checkbox" id="ifSubgroups" name="ifSubgroups">
-          </div>
-          <input type="submit" value="Submit" id="submit">
-        </form>
         <div id="groups">
           <h1>Groups and their projects</h1>
           <p>User has a total of <%= groupNumber %> groups.</p>
           <% if(groupNumber !== 0) { %>
           <% group.forEach(function(group) { %>
           <div class="project">
-            <h2><%= group.name %></h2>
+            <h2><%= group.name || "N/A"%></h2>
             <% if(group.avatarUrl !== null) { %>
               <img src="<%= group.avatarUrl %>" alt="Group avatar">
             <% } %>
             <ul>
-              <li><strong>FullPath : </strong> <%= group.fullPath %></li>
-              <li><strong>WebURL : </strong> <%= group.webUrl %></li>
+              <li><strong>FullPath : </strong> <%= group.fullPath|| "N/A" %></li>
+              <li><strong>WebURL : </strong> <%= group.webUrl || "N/A"%></li>
               <h3>Projects</h3>
               <% if(group.projectCount > 0) { %>
                 <% Object.keys(group.projects).forEach(project => { %>
